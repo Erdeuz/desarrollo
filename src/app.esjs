@@ -1,22 +1,8 @@
-importar { Terminal } desde '@es-js/terminal'
-
-asincrono funcion inicio() {
-	Terminal.limpiar()
-
-	Terminal.escribir('Ingresa un valor:')
-
-	const resultado = esperar Terminal.leer()
-
-	Terminal.escribir({
-		Resultado: resultado,
-		Tipo: tipoDe resultado,
-	})
-
-	Terminal.escribir('Presiona ENTER para volver a iniciar')
-
-	esperar Terminal.leerEnter()
-
-	esperar inicio()
+function esPar(numero) {
+if (numero % 2 ===0){
+  return true
+}else{
+  return false
 }
-
-inicio()
+//Definiendo si es par o no!  // Escribe tu código aquí 👈
+}
