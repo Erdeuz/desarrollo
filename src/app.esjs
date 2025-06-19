@@ -1,8 +1,16 @@
-function esPar(numero) {
-if (numero % 2 ===0){
-  return true
-}else{
-  return false
-}
-//Definiendo si es par o no!  // Escribe tu código aquí 👈
+// effects/typewriter.js
+/**
+ * Avanza un paso en el efecto typewriter.
+ * @param {string} fullText - texto completo objetivo.
+ * @param {number} currentIndex - índice actual (cuántos caracteres ya mostrados).
+ * @returns {{ newText: string, newIndex: number, done: boolean }}
+ */
+export function nextTypewriterFrame(fullText, currentIndex) {
+  if (currentIndex >= fullText.length) {
+    return { newText: fullText, newIndex: currentIndex, done: true };
+  }
+  const newIndex = currentIndex + 1;
+  const newText = fullText.slice(0, newIndex);
+  const done = newIndex >= fullText.length;
+  return { newText, newIndex, done };
 }
