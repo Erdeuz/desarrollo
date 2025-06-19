@@ -1,16 +1,19 @@
-// effects/typewriter.js
-/**
- * Avanza un paso en el efecto typewriter.
+* Avanza un paso en el efecto typewriter.
  * @param {string} fullText - texto completo objetivo.
  * @param {number} currentIndex - índice actual (cuántos caracteres ya mostrados).
- * @returns {{ newText: string, newIndex: number, done: boolean }}
+ * @returns {{ displayText: string, newState: { index: number }, done: boolean }}
  */
-export function nextTypewriterFrame(fullText, currentIndex) {
-  if (currentIndex >= fullText.length) {
-    return { newText: fullText, newIndex: currentIndex, done: true };
+export function nextTypewriterFrame(state) {
+  // state: { fullText: string, index: number }
+  const { fullText, index } = state;
+  if (index >= fullText.length) {
+    return { displayText: fullText, newState: state, done: true };
   }
-  const newIndex = currentIndex + 1;
+  const newIndex = index + 1;
   const newText = fullText.slice(0, newIndex);
-  const done = newIndex >= fullText.length;
-  return { newText, newIndex, done };
+  return {
+    displayText: newText,
+    newState: { fullText, index: newIndex },
+    done: newIndex >= fullText.length
+  };
 }
